@@ -59,7 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") { // Check for a POST method was sent
 				}
 			} else {
 				$contact_message = "CAPTCHA verification required.";
-			}*/
+			}
 		}
 	}
 }
