@@ -1,4 +1,4 @@
-<?php // Websites by Paul
+<?php
 
 /*
 	// Paul Dziedzic
