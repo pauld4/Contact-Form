@@ -1,5 +1,4 @@
 # Paul Dziedzic
-# websitesbypaul.com
 # August 20, 2019
 
 # This application creates 3 stacks, adds items to the stacks, and prints them out
