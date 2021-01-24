@@ -30,11 +30,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") { // Check for a POST method was sent
 								
 								$headers  = 'MIME-Version: 1.0' . "\r\n"; // Define the headers
 								$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; // Enable HTML in email
-								$headers .= 'From: Paul Dziedzic <paul@websitesbypaul.com>' . "\r\n" . // Display "from" name and address
-								'Reply-To: paul@websitesbypaul.com' . "\r\n" . // Set the address to reply to
+								$headers .= 'From: Paul Dziedzic <myemail@website.com>' . "\r\n" . // Display "from" name and address
+								'Reply-To: myemail@website.com' . "\r\n" . // Set the address to reply to
 								'X-Mailer: PHP/' . phpversion(); // Set client used
 								
-								$addr = "paul@websitesbypaul.com"; // Declare who the email is being sent to
+								$addr = "useremail@website.com"; // Declare who the email is being sent to
 								$sub = "New Contact"; // Declare the subject line in the email
 								$msg = "<html><body>"; // Create the text in the email to be displayed
 								$msg .= "<p>" . $contact->getName() . " has contacted you. You can contact them back via " . $contact->getEmail() . ".</p>";
