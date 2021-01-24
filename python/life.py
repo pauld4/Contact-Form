@@ -1,6 +1,6 @@
 # Conway's Game of Life
 # Last update: August 18, 2019
-# By Paul Dziedzic https://www.websitesbypaul.com
+# By Paul Dziedzic
 #
 # The current program prints a grid of squares
 # and a square can be toggled by clicking on it
