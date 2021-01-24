@@ -1,6 +1,6 @@
 <?php 
 
-/* Websites by Paul
+/*
 	// Paul Dziedzic
 	// fizzbuzz.php
 	// August 16, 2019
