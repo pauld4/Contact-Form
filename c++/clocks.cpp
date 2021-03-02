@@ -1,8 +1,8 @@
 /*
  * Clocks.cpp
  *
- * Paul Dziedzic
- * March 2, 2020
+ * Clock application that starts at 0:00:00 and can add an hour, minute, or second to the time.
+ * By Paul Dziedzic
  *
  */
 
