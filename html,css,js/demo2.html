@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+    <style>
+		body, html {
+			height: 100%;
+			margin: 0;
+		}
+		
+        .bg {
+			background-image: url('demo2/snow_bg.jpg');
+			
+			position: relative;
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			min-height: 100%;
+		}
+		
+        .snow{
+            background-image: url('demo2/snowl.png'), url('demo2/snowm.png'), url('demo2/snows.png');
+            
+			position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            z-index:1;
+            animation: snow 1000s linear infinite;
+            transform: translate3d(0,0,0);
+        }
+		
+        @keyframes snow {
+			0% {
+				background-position: 0px 0px, 0px 0px, 0px 0px;
+			}
+			
+			100% {
+				background-position: 50000px 50000px, 10000px 20000px, -10000px 15000px;
+			}          
+        }
+		
+		.cbw {
+			position: fixed;
+			background-color: white;
+			padding: 4px;
+			left: 0;
+			bottom: 0;
+			z-index: 2;
+		}
+    </style>
+</head>
+
+<body>
+	<div class="bg"></div>
+	<div class="snow"></div>
+	<div class="cbw"><a href="https://www.cbreezewebs.com">cbreezewebs</a></div>
+</body>
+
+</html>
