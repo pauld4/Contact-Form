@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<div id="clock"></div>
+	<br>
+	<div id="time_panel">
+		<button onclick="getLiveTime()">Get Live Time</button><br>
+		<button onclick="toggleTime()">Start Time</button><br>
+		<button onclick="toggleTimeFormat()">24 Hour Format</button><br>
+		Hours: <button onclick="addHour(-1)">-</button> <button onclick="addHour(1)">+</button><br>
+		Minutes: <button onclick="addMinute(-1)">-</button> <button onclick="addMinute(1)">+</button><br>
+		Seconds: <button onclick="addSecond(-1)">-</button> <button onclick="addSecond(1)">+</button>
+	</div>
+	<br>
+	<div id="calendar"></div>
+	<br>
+	<div id="calendar_panel">
+		<button onclick="getLiveDate()">Get Live Date</button><br>
+		Month: <button onclick="addMonth(-1)">-</button> <button onclick="addMonth(1)">+</button><br>
+		Day: <button onclick="addDay(-1)">-</button> <button onclick="addDay(1)">+</button><br>
+		Year: <button onclick="addYear(-1)">-</button> <button onclick="addYear(1)">+</button>
+	</div>
+	
+	<script>
+		var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		var t = 0;
+		
+		function getLiveTime() {
+			var d = new Date();
+			t = 0;
+			
+			t += d.getHours() * 3600;
+			t += d.getMinutes() * 60;
+			t += d.getSeconds();
+			
+			printTime(t);
+		}
+		
+		function addHour(amount) {
+			t += 3600 * amount;
+			printTime(t);
+		}
+		
+		function addMinute(amount) {
+			t += 60 * amount;
+			printTime(t);
+		}
+		function addSecond(amount) {
+			t += 1 * amount;
+			printTime(t);
+		}
+		
+		function printTime(time_input) {
+			if(time_input < 0) time_input = 0;
+			t = time_input;
+			var h = Math.floor(t / 3600);
+			var m = Math.floor((t % 3600) / 60);
+			var s = Math.floor((t % 3600) % 60);
+			
+			if(h > 12) {
+				h -= 12;
+			}
+			
+			if(m < 10) {
+				m = "0" + m;
+			}
+			
+			if(s < 10) {
+				s = "0" + s;
+			}
+			
+			var time_str = h + ":" + m + ":" + s;
+			document.getElementById("clock").innerHTML = time_str;
+		}
+		
+		/*function updateTime() {
+			var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			var d = new Date();
+			var h = d.getHours();
+			var m = d.getMinutes();
+			var s = d.getSeconds();
+			var a = "AM";
+			
+			if(h > 11 && h < 24) {
+				a = "PM";
+			}
+			
+			if(h > 12) {
+				h -= 12;
+			}
+			
+			if(m < 10) {
+				m = "0" + m;
+			}
+			
+			if(s < 10) {
+				s = "0" + s;
+			}
+			
+			var t = months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + " " + h + ":" + m + ":" + s + " " + a;
+			var str = "The time is ";
+			str += t;
+			document.getElementById("clock").innerHTML = str;
+		}
+		
+		updateTime();
+		setInterval(updateTime, 1000);*/
+		printTime(0);
+	</script>
+</body>
+
+</html>
