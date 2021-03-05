@@ -1,6 +1,6 @@
 //============================================================================
-// Name        : HelloWorld.cpp
-// Author      : 
+// Name        : banking.cpp
+// Author      : Paul Dziedzic
 // Version     :
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
