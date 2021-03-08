@@ -10,7 +10,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 		Scanner scnr = new Scanner(System.in);
-        accountList.add(new Account(1000, 1000.00)); // start user with an account with 1000$
+		accountList.add(new Account(1000, 1000.00)); // start user with an account with 1000$
 		char userInput = 'a';
 		
 		while(userInput != 'x') {
@@ -51,9 +51,9 @@ public class Driver {
 		System.out.println("[3] Create Account");
 		System.out.println("[4] Close Account");
 		System.out.println("[5] View Accounts");
-        System.out.println("[x] Exit System");
-        System.out.printf("\nYou have $%.2f in your wallet.\n", myWallet);
-        System.out.println("\nEnter a menu selection: ");
+		System.out.println("[x] Exit System");
+		System.out.printf("\nYou have $%.2f in your wallet.\n", myWallet);
+		System.out.println("\nEnter a menu selection: ");
 	}
 	
 	public static void printAccounts() {
