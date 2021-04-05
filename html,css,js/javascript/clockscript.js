@@ -1,19 +1,19 @@
 class DemoClock {
-	ticks = 0;
-	max_ticks = 86400;
+	ticks = 0; // ticks represents the seconds; 3600 ticks is 3600 seconds, or 1 hour
+	max_ticks = 86400; // number of seconds in a day
 	
 	getTicks() {
 		return this.ticks;
 	}
 	
-	setTicks(t) {
+	setTicks(t) { // set ticks is used for getting the current time
 		this.ticks = t;
 	}
 	
-	addTicks(t) {
+	addTicks(t) { // add ticks is used for adding hours, minutes, or seconds to the time
 		this.ticks += t;
 		
-		if(this.ticks >= this.max_ticks) {
+		if(this.ticks >= this.max_ticks) { // if the ticks is more than a day or less than 0, then convert to appropriate time
 			this.ticks -= this.max_ticks;
 		}
 		
@@ -22,7 +22,7 @@ class DemoClock {
 		}
 	}
 	
-	printTime() {
+	printTime() { // converts the ticks to a readable format (hh:mm:ss)
 		var t = this.ticks;
 		
 		var h = Math.floor(t / 3600);
@@ -55,10 +55,10 @@ class DemoClock {
 	}
 }
 
-var myClock = new DemoClock();
-var timeInterval;
+var myClock = new DemoClock(); // create a new clock object
+var timeInterval; // variable to store the status of the interval for incrementing the time each second
 
-function getLiveTime() {
+function getLiveTime() { // get the current time and convert it to ticks
 	var d = new Date();
 	var t = 0;
 	
@@ -70,17 +70,17 @@ function getLiveTime() {
 	document.getElementById("clock").innerHTML = myClock.printTime();
 }
 
-function resetTime() {
+function resetTime() { // set the clock to 0 ticks, or 12AM
 	myClock.setTicks(0);
 	document.getElementById("clock").innerHTML = myClock.printTime();
 }
 
-function addTime(amount) {
+function addTime(amount) { // used for adding/subtracting the hours, minutes, and seconds
 	myClock.addTicks(amount);
 	document.getElementById("clock").innerHTML = myClock.printTime();
 }
 
-function toggleTime() {
+function toggleTime() { // toggles the start/stop of the incrementing
 	if(!timeInterval) {
 		timeInterval = setInterval(function(){ addTime(1) }, 1000);
 		document.getElementById("startTimer").innerHTML = "Stop Time";
@@ -91,7 +91,7 @@ function toggleTime() {
 	}
 }
 
-function setupClock() {
+function setupClock() { // sets up the clock GUI for the HTML tag; returns the string
 	var str = "";
 	
 	str += "<div id='clock'></div>";
