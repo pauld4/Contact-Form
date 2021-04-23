@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cbreezewebs - Encrypt</title>
+</head>
+
+<body>
+<p>Encryption calculator. Type text or number code into the text box and click "Encrypt" to encode/decode.</p>
+
+<textarea id="codeText" rows="4" cols="50" placeholder="Type code or text here. Use only letters and spaces for text."></textarea>
+
+<button type="button" onclick="decodeText()">Encrypt</button>
+
+<div id="answer"></div>
+
+<br><br>
+
+<div>Modulus Calculator:<br>
+<input type="text" id="fMod" value="1" size="1"> mod <input type="text" id="sMod" value="1" size="1"> <button type="button" onclick="modNumbers()">Calculate</button>
+<div id="modAnswer"></div>
+</div>
+
+<div><a href="https://www.cbreezewebs.com">cbreezewebs</a></div>
+
+<script>
+	var p = 3;
+	var q = 11;
+	var e = 3;
+	
+	var letters = ["", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+	
+	var y = p * q;
+	var y2 = (p - 1) * (q - 1);
+	
+	function getInverse(num1, num2) {
+		for(var i = 0; i < 100; i++) {
+			if((num1 * i) % num2 == 1) {
+				return i;
+			}
+		}
+		return 0;
+	}
+	
+	function modNumbers() {
+		var num1 = document.getElementById("fMod").value;
+		var num2 = document.getElementById("sMod").value;
+		
+		document.getElementById("modAnswer").innerHTML = num1 + " mod " + num2 + " = " + (num1 % num2);
+	}
+	
+	function decodeText() {
+		var encString = document.getElementById("codeText").value.toUpperCase();
+		var codeString = "";
+		
+		if(letters.indexOf(encString.charAt(0)) > 0) {
+			for(var i = 0; i < encString.length; i++) {
+				var codeL;
+				if(encString.charAt(i) == " ") {
+					codeL = 32;
+				} else if(letters.indexOf(encString.charAt(i)) < 1) {
+					codeL = "00";
+				} else {
+					codeL = letters.indexOf(encString.charAt(i));
+					codeL = Math.pow(codeL,e) % y;
+					
+					if(codeL < 10) {
+						codeL = "0" + codeL;
+					}
+				}
+				
+				codeString += codeL;
+			}
+		} else {
+			var d = getInverse(e, y2);
+			
+			encString = encString.replace(/\s+/g, "");
+			document.getElementById("codeText").value = encString;
+			
+			for(var i = 0; i < encString.length; i += 2) {
+				var num = encString.substr(i,2);
+				
+				if(num == "32") {
+					codeString += " ";
+				} else if(num > 32) {
+					codeString += "?";
+				} else {
+					var findNum = Math.pow(num,d) % y;
+					if(typeof letters[findNum] === 'undefined') {
+						codeString += "";
+					} else {
+						codeString += letters[findNum];
+					}
+				}
+			}
+		}
+		
+		if(codeString.length > 0) {
+			document.getElementById("answer").innerHTML = codeString;
+		} else {
+			document.getElementById("answer").innerHTML = "Empty text.";
+		}
+	}
+</script>
+
+</body>
+
+</html>
