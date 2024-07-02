@@ -77,7 +77,7 @@ $fuzzies = new fuzz_list(5,25);
 <html>
 
 <head>
-	<title>FizzBuzz | Websites by Paul</title>
+	<title>FizzBuzz</title>
 </head>
 
 <body>
